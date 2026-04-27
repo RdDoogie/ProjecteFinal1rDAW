@@ -1,3 +1,3 @@
 # ProjecteFinal1rDAW
 
-##DOCKER, JS, HTML, CSS, MySQL
+## DOCKER, JS, HTML, CSS, MySQL
