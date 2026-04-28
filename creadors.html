@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creadors - SPShop</title>
+    <meta name="description" content="Coneix els estudis i desenvolupadors darrere dels teus jocs preferits.">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">SPShop</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inici</a></li>
+                <li><a href="productes.html">Productes</a></li>
+                <li><a href="creadors.html" class="active">Creadors</a></li>
+                <li><a href="sobre-nosaltres.html">Sobre nosaltres</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="catalog-header">
+            <h1>Els nostres Creadors</h1>
+            <div class="controls">
+                <select id="sort-creators">
+                    <option value="alpha-asc">Nom: A-Z</option>
+                    <option value="alpha-desc">Nom: Z-A</option>
+                    <option value="games-desc">Jocs creats: Major a Menor</option>
+                    <option value="games-asc">Jocs creats: Menor a Major</option>
+                </select>
+                <select id="filter-genre">
+                    <option value="">Tots els gèneres</option>
+                </select>
+            </div>
+        </section>
+
+        <section id="creators-container" class="grid-3">
+            <p class="loading-msg">Carregant creadors des de la base de dades...</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 SPShop. Desenvolupat per [El Teu Nom].</p>
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">GitHub</a>
+            </div>
+        </div>
+    </footer>
+    <script src="js/api.js"></script>
+    <script src="js/creadors.js"></script>
+</body>
+</html>

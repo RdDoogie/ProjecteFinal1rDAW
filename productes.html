@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catàleg de Productes - SPShop</title>
+    <meta name="description" content="Explora tots els nostres videojocs disponibles.">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">SPShop</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inici</a></li>
+                <li><a href="productes.html" class="active">Productes</a></li>
+                <li><a href="creadors.html">Creadors</a></li>
+                <li><a href="sobre-nosaltres.html">Sobre nosaltres</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="catalog-header">
+            <h1>Catàleg de Videojocs</h1>
+            <div class="controls">
+                <select id="sort-select">
+                    <option value="">Ordenar per...</option>
+                    <option value="score-desc">Puntuació: Major a Menor</option>
+                    <option value="score-asc">Puntuació: Menor a Major</option>
+                    <option value="alpha-asc">Alfabètic: A-Z</option>
+                    <option value="alpha-desc">Alfabètic: Z-A</option>
+                    <option value="price-desc">Preu: Major a Menor</option>
+                    <option value="price-asc">Preu: Menor a Major</option>
+                </select>
+                <div class="view-toggles">
+                    <button id="btn-grid" class="active">Graella</button>
+                    <button id="btn-list">Llistat</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="products-container" class="grid-view">
+            <p class="loading-msg">Carregant videojocs des de la base de dades...</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 SPShop. Desenvolupat per [El Teu Nom].</p>
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">GitHub</a>
+            </div>
+        </div>
+    </footer>
+    <script src="js/api.js"></script>
+    <script src="js/productes.js"></script>
+</body>
+</html>
