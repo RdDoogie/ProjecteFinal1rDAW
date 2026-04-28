@@ -49,12 +49,17 @@ header {
     z-index: 1000;
 }
 
+/* Estils per al logotip */
 .logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--primary-color);
+    display: flex;
+    align-items: center;
     text-decoration: none;
-    letter-spacing: 1px;
+}
+
+.logo-img {
+    height: 50px; /* Ajusta aquesta alçada segons el teu gust */
+    width: auto;  /* Això manté la proporció original de la imatge */
+    display: block;
 }
 
 nav ul {
