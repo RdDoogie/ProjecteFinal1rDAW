@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  servidorweb:
+    image: httpd:2.4
+    ports:
+      - "80:80"
+    volumes:
+      # Aquí está el cambio clave: mapeamos la raíz (.) a la carpeta de Apache
+      - ./:/usr/local/apache2/htdocs
+    networks:
+      - xarxa-videojocs
+
+  node:
+    image: node:16
+    ports:
+      - "3000:3000"
+    working_dir: /app
+    volumes:
+      # Necesitarás crear esta carpeta y meter los archivos del profesor
+      - ./projecteVideojocs_server:/app
+    command: npm start
+    depends_on:
+      - db
+    networks:
+      - xarxa-videojocs
+
+  db:
+    image: mariadb:10.7
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=iesmanacorroot
+      - MYSQL_USER=daw
+      - MYSQL_PASSWORD=iesmanacor
+      - MYSQL_DATABASE=practicavideojocs
+    volumes:
+      - ./volums/mysql:/var/lib/mysql
+    networks:
+      - xarxa-videojocs
+
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - "8083:8083"
+    environment:
+      - PMA_HOST=db
+    depends_on:
+      - db
+    networks:
+      - xarxa-videojocs
+
+networks:
+  xarxa-videojocs:
+    driver: bridge
