@@ -6,8 +6,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      # Aquí está el cambio clave: mapeamos la raíz (.) a la carpeta de Apache
-      - ./:/usr/local/apache2/htdocs
+      # CORRECCIÓ: Ara només mapegem la carpeta del front, tal com demana la pràctica
+      - ./projecteVideojocs_front:/usr/local/apache2/htdocs
     networks:
       - xarxa-videojocs
 
@@ -17,7 +17,7 @@ services:
       - "3000:3000"
     working_dir: /app
     volumes:
-      # Necesitarás crear esta carpeta y meter los archivos del profesor
+      # Aquí s'assum que tens la carpeta del professor just al costat
       - ./projecteVideojocs_server:/app
     command: npm start
     depends_on:
