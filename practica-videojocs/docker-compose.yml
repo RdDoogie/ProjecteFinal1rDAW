@@ -6,7 +6,6 @@ services:
     ports:
       - "80:80"
     volumes:
-      # CORRECCIÓ: Ara només mapegem la carpeta del front, tal com demana la pràctica
       - ./projecteVideojocs_front:/usr/local/apache2/htdocs
     networks:
       - xarxa-videojocs
@@ -17,7 +16,6 @@ services:
       - "3000:3000"
     working_dir: /app
     volumes:
-      # Aquí s'assum que tens la carpeta del professor just al costat
       - ./projecteVideojocs_server:/app
     command: npm start
     depends_on:
@@ -42,7 +40,7 @@ services:
   phpmyadmin:
     image: phpmyadmin
     ports:
-      - "8083:8083"
+      - "8083:80"
     environment:
       - PMA_HOST=db
     depends_on:
