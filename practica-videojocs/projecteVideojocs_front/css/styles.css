@@ -427,3 +427,26 @@ footer {
 .btn-filtre:hover {
     background-color: var(--primary-hover);
 }
+/*Responsivitat per a la capçalera en mobil */
+@media (max-width: 600px) {
+    header {
+        flex-direction: row; /* logo i menu in row */
+        justify-content: space-between;
+        padding: 10px 15px;
+        flex-wrap: wrap; /* Per si els links no hi caben */
+    }
+
+    .logo-img {
+        height: 40px; /* logo mes petit */
+    }
+
+    nav ul {
+        display: flex;
+        gap: 10px; /* Menys espai entre links */
+    }
+
+    nav ul li a {
+        padding: 5px 8px;
+        font-size: 0.85rem; /* text mes petit */
+    }
+}
