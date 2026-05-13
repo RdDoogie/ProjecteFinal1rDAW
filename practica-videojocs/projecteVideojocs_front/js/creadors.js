@@ -2,23 +2,24 @@ let ordreCreadors = "alpha-asc";
 
 async function carregarCreadors() {
     const contenedor = document.querySelector("#creators-container");
-    // Selector depenguent del genere
     const genereSel = document.querySelector("#filter-genre").value;
     
-    // Depenguent del id_genere_principal seleccionat
-    if (genereSel) {
-    sql += ` WHERE c.id_genere_principal = ${genereSel}`; 
-    }
-
-    // Query amb el count
+    // Query base
     let sql = 
         `SELECT c.*, COUNT(vc.id_videojoc) AS num_jocs
         FROM creadors c
-        LEFT JOIN videojocs_creadors vc ON c.id_creador = vc.id_creador
-        GROUP BY c.id_creador`
-        ;
+        LEFT JOIN videojocs_creadors vc ON c.id_creador = vc.id_creador`
+    ;
 
-    // Ordenacio depenguent del select
+    // Afegim el group by si hi ha un genere
+    if (genereSel) {
+        sql += ` WHERE c.id_genere_principal = ${genereSel}`; 
+    }
+
+    // GROUP BY de la query
+    sql += " GROUP BY c.id_creador";
+
+    // Els OrderBy de la Query
     switch (ordreCreadors) {
         case 'alpha-asc':  sql += " ORDER BY c.nom ASC"; break;
         case 'alpha-desc': sql += " ORDER BY c.nom DESC"; break;
@@ -29,11 +30,6 @@ async function carregarCreadors() {
 
     const creadors = await consultar(sql);
     contenedor.innerHTML = "";
-
-    if (creadors.length === 0) {
-        contenedor.innerHTML = "<p>No s'han trobat creadors.</p>";
-        return;
-    }
 
     creadors.forEach(estudi => {
         const targeta = document.createElement("article");
@@ -48,15 +44,17 @@ async function carregarCreadors() {
                     Veure col·lecció
                 </a>
             </div>`
-        ;
+            ;
         contenedor.appendChild(targeta);
     });
 }
 
-// EventListener per el canvi d'ordre dels creadors
+// EventListener per canviar els sort
 document.querySelector("#sort-creators").addEventListener("change", (e) => {
     ordreCreadors = e.target.value;
     carregarCreadors();
 });
+
+document.querySelector("#filter-genre").addEventListener("change", carregarCreadors);
 
 document.addEventListener("DOMContentLoaded", carregarCreadors);
