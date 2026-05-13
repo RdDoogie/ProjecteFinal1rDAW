@@ -450,3 +450,18 @@ footer {
         font-size: 0.85rem; /* text mes petit */
     }
 }
+/* Imatge de sobre nosaltres */
+.img-team {
+    width: 70%;           
+    height: 500px;         
+    object-fit: cover;     
+    object-position: top; 
+    border-bottom: 2px solid var(--border-color);
+}
+
+/* Imatge sobre nosaltres en mobil */
+@media (max-width: 600px) {
+    .img-team {
+        height: 200px;     
+    }
+}
