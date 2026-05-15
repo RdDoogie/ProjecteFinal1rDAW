@@ -34,6 +34,7 @@ services:
       - MYSQL_DATABASE=practicavideojocs
     volumes:
       - ./volums/mysql:/var/lib/mysql
+      - ./practicavideojocs.sql:/docker-entrypoint-initdb.d/practicavideojocs.sql
     networks:
       - xarxa-videojocs
 
